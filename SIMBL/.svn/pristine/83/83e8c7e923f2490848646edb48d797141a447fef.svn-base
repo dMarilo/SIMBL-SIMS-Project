@@ -1,0 +1,44 @@
+package frame;
+
+import java.awt.Dimension;
+import java.awt.Point;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+import frame.menubar.CustomMenuBar;
+
+public class MainFrame extends JFrame{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	public MainFrame()
+	{
+		Dimension screenSize = null;
+		Dimension frameSize = null;
+		Point location = null;
+		
+		JLabel leftLabel = null;
+		
+		//Postavljanje naslova i nacina iskljucivanja glavnog prozora
+		setTitle("Simbl BPMN");
+		
+		//setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+		
+		//Podesavanje minimalne, pocetne i granicnih velicina
+		screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+		frameSize = new Dimension(800, 600);
+		
+		location = new Point((screenSize.width - frameSize.width) / 2, (screenSize.height - frameSize.height) / 2);
+		
+		setBounds(location.x, location.y, frameSize.width, frameSize.height);
+		setMinimumSize(frameSize);
+		setExtendedState(MAXIMIZED_BOTH);
+		
+		setJMenuBar(new CustomMenuBar());
+	}
+	
+}
